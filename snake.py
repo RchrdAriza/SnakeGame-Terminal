@@ -5,18 +5,8 @@ import time
 def show_menu():
     w.clear()
     w.border(0)
-    w.addstr(sh // 2 - 2, sw // 2 - 5, "Snake")
-#    w.addstr(sh // 2, sw // 2 - 8, "1. Nueva partida")
-#    w.addstr(sh - 2, sw // 2 - 16, "Presiona 'q' para salir")
-    # 
-    # option1_text = "1 - Nueva partida"
-    # option_espacio = " "
-    # option2_text = "2 - Salir"
-    #
-    # w.addstr(sh // 2 + 2, sw // 2 - len(option1_text) // 2, option1_text)
-    # w.addstr(sh // 2 + 3, sw // 2 - len(option1_text) // 2, option_espacio)
-    # w.addstr(sh // 2 + 4, sw // 2 - len(option2_text) // 2, option2_text)
-    #
+
+
     option1_text = "1. New Game"
     option2_text = "2. Quit"
 
@@ -25,6 +15,7 @@ def show_menu():
 
     w.addstr(sh // 2 + 2, option1_x, option1_text)
     w.addstr(sh // 2 + 4, option2_x, option2_text)
+
     while True:
         key = w.getch()
         if key == ord('1'):
@@ -38,24 +29,18 @@ def game_over(score):
     w.clear()
     w.border(0)
     w.addstr(sh // 2 - 2, sw // 2 - 5, "Game Over")
-#    w.addstr(sh // 2, sw // 2 - 8, "Puntuación: {}".format(score))
+
     score_text = "Score: {}".format(score)
     score_x = sw // 2 - len(score_text) // 2
     w.addstr(sh // 2, score_x, score_text)
-    # option1_text = "1 - Nueva partida"
-    # option2_text = "2 - Salir"
-    #
-    # w.addstr(sh // 2 + 2, sw // 2 - len(option1_text) // 2, option1_text)
-    # w.addstr(sh // 2 + 4, sw // 2 - len(option2_text) // 2, option2_text)
-    #
-      
-    option1_text = "1. New Game"
+
+
     option2_text = "2. Quit"
 
-    option1_x = sw // 2 - len(option1_text) // 2
+
     option2_x = sw // 2 - len(option2_text) // 2
 
-    w.addstr(sh // 2 + 2, option1_x, option1_text)
+
     w.addstr(sh // 2 + 4, option2_x, option2_text)
 
     while True:
@@ -102,8 +87,18 @@ w.addstr(sh - 1, sw // 2 - len(quit_message) // 2, quit_message)
 delay = 0.1
 prev_time = time.time()
 apple_counter = 0
+pear = None
+pear_timer = None
+pear_score = 4
+pear_duration = 5
+pear_chance = 10
+bomb = None
+bomb_timer = None
+bomb_duration = 3
+bomb_chance = 20
 
 while True:
+   
     current_time = time.time()
     elapsed_time = current_time - prev_time
 
@@ -134,7 +129,7 @@ while True:
         new_head[1] -= 1
     if direction == curses.KEY_RIGHT:
         new_head[1] += 1
-    
+
     snake.insert(0, new_head)
     if snake[0][0] == 0:
         snake[0][0] = sh - 2
@@ -144,30 +139,62 @@ while True:
         snake[0][1] = sw - 2
     elif snake[0][1] == sw - 1:
         snake[0][1] = 1
-    
-
 
     if snake[0][0] in [0, sh - 1] or snake[0][1] in [0, sw - 1] or snake[0] in snake[1:]:
         break
-   
+
+    if score % 5 == 0 and score > 0 and pear is None and random.randint(1, pear_chance) == 1:
+        while True:
+            new_pear = [random.randint(1, sh - 2), random.randint(1, sw - 2)]
+            if new_pear not in snake and new_pear != food:
+                pear = new_pear
+                pear_timer = time.time()
+                break
+    elif pear is not None and time.time() - pear_timer > pear_duration:
+        w.addch(pear[0], pear[1], ' ')
+        pear = None
+
+    if score % 8 == 0 and score > 0 and bomb is None and random.randint(1, bomb_chance) == 1:
+        while True:
+            new_bomb = [random.randint(1, sh - 2), random.randint(1, sw - 2)]
+            if new_bomb not in snake and new_bomb != food and new_bomb != pear:
+                bomb = new_bomb
+                bomb_timer = time.time()
+                break
+    elif bomb is not None and time.time() - bomb_timer > bomb_duration:
+        w.addch(bomb[0], bomb[1], ' ')
+        bomb = None
+
+    if snake[0] == pear:
+        score += pear_score
+        score_text = "Score: {}".format(score)
+        w.addstr(0, sw // 2 - len(score_text) // 2, score_text)
+        pear = None
+
+    if snake[0] == bomb:
+        game_over(score)
+
     if snake[0] == food:
         score += 1
         score_text = "Score: {}".format(score)
         w.addstr(0, sw // 2 - len(score_text) // 2, score_text)
-        
-        
+
         if apple_counter % 2 == 0:
             delay *= 0.5
-        #
+
         while True:
             new_food = [random.randint(1, sh - 2), random.randint(1, sw - 2)]
-            if new_food not in snake:
+            if new_food not in snake and new_food != pear and new_food != bomb:
                 food = new_food
                 break
-
     else:
         tail = snake.pop()
         w.addch(tail[0], tail[1], ' ')
+
+    if pear is not None:
+        w.addch(pear[0], pear[1], '🍐')
+    if bomb is not None:
+        w.addch(bomb[0], bomb[1], '💣')
 
     w.addch(food[0], food[1], '🍏')
     w.addch(snake[0][0], snake[0][1], curses.ACS_BLOCK)
@@ -177,3 +204,4 @@ curses.endwin()
 
 
 game_over(score)
+
