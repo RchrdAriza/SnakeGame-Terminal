@@ -1,4 +1,4 @@
-<h1 style="text-align: center;">🐍Snake Game🐍</h1>
+<center><h1>🐍Snake Game🐍</h1></center>
 
 
 <p align="center">
