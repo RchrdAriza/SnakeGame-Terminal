@@ -4,6 +4,8 @@
 <p align="center">
     <img src="https://img.shields.io/badge/-Python-success?logo=python&logoColor=ffffff&labelColor=success&color=white" >
     <img src="https://img.shields.io/badge/-Atari%20Game-success?logo=Atari&logoColor=ffffff&labelColor=success&color=white" >
+    <img src="https://img.shields.io/badge/-Linux-success?logo=Linux&logoColor=ffffff&labelColor=success&color=white" >
+    <img src="https://img.shields.io/badge/-Android-success?logo=Android&logoColor=ffffff&labelColor=success&color=white" >
 </p>
 
 
