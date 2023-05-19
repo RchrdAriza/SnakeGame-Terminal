@@ -1,4 +1,4 @@
-<h1 style="text-align: center;">Snake Game</h1>
+<h1 style="text-align: center;">🐍Snake Game🐍</h1>
 
 
 <p align="center">
@@ -25,14 +25,14 @@ python snake.py
 #or
 python3 snake.py
 ```
-And that would be all!
+And that would be all✨!
 
 ## How does the game work?
 The mechanics are quite similar to those of the classic game.
 
 | items | Characteristics | Disadvantages |
 |----------|----------|----------|
-| manzana | Awards points | Gives only 1 point |
-| Pera | Awards 5 points | Disappears after 5 seconds and Appears randomly |
-| Bomba | Appears randomly | It makes you lose |
+| 🍏 | Awards points | Gives only 1 point |
+| 🍐 | Awards 5 points | Disappears after 5 seconds and Appears randomly |
+| 💣 | Appears randomly | It makes you lose |
 
