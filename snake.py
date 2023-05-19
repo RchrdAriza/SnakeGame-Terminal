@@ -5,7 +5,7 @@ import time
 def show_menu():
     w.clear()
     w.border(0)
-    w.addstr(sh // 2 - 2, sw // 2 - 5, "Serpiente")
+    w.addstr(sh // 2 - 2, sw // 2 - 5, "Snake")
 #    w.addstr(sh // 2, sw // 2 - 8, "1. Nueva partida")
 #    w.addstr(sh - 2, sw // 2 - 16, "Presiona 'q' para salir")
     # 
@@ -17,8 +17,8 @@ def show_menu():
     # w.addstr(sh // 2 + 3, sw // 2 - len(option1_text) // 2, option_espacio)
     # w.addstr(sh // 2 + 4, sw // 2 - len(option2_text) // 2, option2_text)
     #
-    option1_text = "1. Nueva partida"
-    option2_text = "2. Salir"
+    option1_text = "1. New Game"
+    option2_text = "2. Quit"
 
     option1_x = sw // 2 - len(option1_text) // 2
     option2_x = sw // 2 - len(option2_text) // 2
@@ -39,7 +39,7 @@ def game_over(score):
     w.border(0)
     w.addstr(sh // 2 - 2, sw // 2 - 5, "Game Over")
 #    w.addstr(sh // 2, sw // 2 - 8, "Puntuación: {}".format(score))
-    score_text = "Puntuación: {}".format(score)
+    score_text = "Score: {}".format(score)
     score_x = sw // 2 - len(score_text) // 2
     w.addstr(sh // 2, score_x, score_text)
     # option1_text = "1 - Nueva partida"
@@ -49,8 +49,8 @@ def game_over(score):
     # w.addstr(sh // 2 + 4, sw // 2 - len(option2_text) // 2, option2_text)
     #
       
-    option1_text = "1. Nueva partida"
-    option2_text = "2. Salir"
+    option1_text = "1. New Game"
+    option2_text = "2. Quit"
 
     option1_x = sw // 2 - len(option1_text) // 2
     option2_x = sw // 2 - len(option2_text) // 2
@@ -93,10 +93,10 @@ food = [sh // 2, sw // 2]
 key = curses.KEY_RIGHT
 
 score = 0
-score_text = "Puntuación: {}".format(score)
+score_text = "Score: {}".format(score)
 w.addstr(0, sw // 2 - len(score_text) // 2, score_text)
 
-quit_message = "Presiona 'q' para salir"
+quit_message = "Press 'q' to quit"
 w.addstr(sh - 1, sw // 2 - len(quit_message) // 2, quit_message)
 
 delay = 0.1
@@ -152,12 +152,13 @@ while True:
    
     if snake[0] == food:
         score += 1
-        score_text = "Puntuación: {}".format(score)
+        score_text = "Score: {}".format(score)
         w.addstr(0, sw // 2 - len(score_text) // 2, score_text)
         
+        
         if apple_counter % 2 == 0:
-            delay *= 0.7
-
+            delay *= 0.5
+        #
         while True:
             new_food = [random.randint(1, sh - 2), random.randint(1, sw - 2)]
             if new_food not in snake:
