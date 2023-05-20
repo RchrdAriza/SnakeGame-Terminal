@@ -206,6 +206,5 @@ while True:
 
 curses.endwin()
 
-
 game_over(score)
 
