@@ -58,6 +58,7 @@ sh, sw = stdscr.getmaxyx()
 w = curses.newwin(sh, sw, 0, 0)
 w.keypad(1)
 w.timeout(100)
+curses.noecho()
 
 show_menu()
 
@@ -106,28 +107,31 @@ while True:
         if elapsed_time >= delay:
             prev_time = current_time
 
+
     next_key = w.getch()
     if next_key != -1:
-        if next_key == curses.KEY_DOWN and direction != curses.KEY_UP:
+        if next_key == curses.KEY_DOWN or next_key == ord('s') and direction != curses.KEY_UP:
             direction = next_key
-        elif next_key == curses.KEY_UP and direction != curses.KEY_DOWN:
+        elif next_key == curses.KEY_UP or next_key == ord('w') and direction != curses.KEY_DOWN:
             direction = next_key
-        elif next_key == curses.KEY_LEFT and direction != curses.KEY_RIGHT:
+        elif next_key == curses.KEY_LEFT or next_key == ord('a') and direction != curses.KEY_RIGHT:
             direction = next_key
-        elif next_key == curses.KEY_RIGHT and direction != curses.KEY_LEFT:
+        elif next_key == curses.KEY_RIGHT or next_key == ord('d') and direction != curses.KEY_LEFT:
             direction = next_key
 
-        if next_key == ord('q') or next_key == ord('Q'):
-            game_over(score)
+    if next_key == ord('q') or next_key == ord('Q'):
+        game_over(score)
 
+
+       
     new_head = [snake[0][0], snake[0][1]]
-    if direction == curses.KEY_DOWN:
+    if direction == curses.KEY_DOWN or direction == ord("s"):
         new_head[0] += 1
-    if direction == curses.KEY_UP:
+    if direction == curses.KEY_UP or direction == ord("w"):
         new_head[0] -= 1
-    if direction == curses.KEY_LEFT:
+    if direction == curses.KEY_LEFT or direction == ord("a"):
         new_head[1] -= 1
-    if direction == curses.KEY_RIGHT:
+    if direction == curses.KEY_RIGHT or direction == ord("d"):
         new_head[1] += 1
 
     snake.insert(0, new_head)
