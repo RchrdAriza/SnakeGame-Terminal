@@ -8,7 +8,6 @@
     <img src="https://img.shields.io/badge/-Android-success?logo=Android&logoColor=ffffff&labelColor=success&color=white" >
 </p>
 
-
 ## Download and play
 
 Just paste this into your terminal:
@@ -46,4 +45,15 @@ The mechanics are quite similar to those of the classic game.
 | ➡️ or d  |  Moves to the right  |
 | ⬇️ or s  |  Moves downward  |
 | ⬅️ or a  |  Moves to the left
+
+# Captures
+
+<p align="center">
+    <img src="https://res.cloudinary.com/dhqo7n9gd/image/upload/v1684691230/SnakeGame-Terminal/Screenshot_20230521-122551_Termux_iakdhj.jpg" width=350>
+    <img src="https://res.cloudinary.com/dhqo7n9gd/image/upload/v1684691759/SnakeGame-Terminal/Juego_qlta8c.gif" width=350>
+<img src="https://res.cloudinary.com/dhqo7n9gd/image/upload/v1684691250/SnakeGame-Terminal/Screenshot_20230521-123333_Termux_hfuvio.jpg" width=350>
+
+</p>
+
+
 
