@@ -5,8 +5,38 @@ import time
 def show_menu():
     w.clear()
     w.border(0)
-
-
+    
+    title = """⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡖⣻⠉⢿⣿⠆⠈⠙⢶⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣷⡚⠒⠊⠙⠂⠀⠀⢆⣱⡘⡷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⡟⠛⠳⣖⠒⠒⢙⡤⣿⣷⠃⢳⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⢻⠆⠤⠤⡗⣿⢻⣼⢀⢷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⠇⠀⠸⣼⣏⡒⢲⠟⡟⣾⡾⣎⢾⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡾⠀⢸⡴⢻⠃⠀⡜⢸⣻⠴⠛⠁⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⣰⣰⣷⠏⠀⢰⠃⣿⣷⢳⣰⣤⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠹⣯⣿⣟⠢⢤⣇⣸⣿⡽⣧⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⣶⣭⠓⠌⠉⡛⠉⣿⣼⣾⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⠃⠀⠀⣰⠁⣼⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⠃⠀⠀⠐⠁⣴⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⠇⠀⠀⠀⠀⣼⠏⢰⢦⡀⠀⠀⠀⠀⠀⣀⡠⠤⠤⠤⠤⣀⡀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡿⠀⡀⠀⠀⣸⡟⠀⠈⢯⡓⠦⢤⡤⠴⠚⠁⠀⠀⠀⠀⠀⢘⠍⠳⡄⠀⠀⠀⠀
+⠀⠀⢀⣠⠤⠖⠒⡒⠒⠢⢤⡗⢤⡉⢺⠒⣿⡃⣀⣀⣠⠽⠷⠒⠛⠉⠉⣉⣉⣛⣛⣛⣛⡉⠀⠀⣸⠀⠀⠀⠀
+⢀⡴⠋⠀⠀⢠⠊⠀⠀⠀⢸⡇⢄⡈⠛⣏⣿⠉⠁⠀⢀⣠⠤⠖⠚⠉⠉⠀⠀⠀⠓⠦⣄⠉⠙⠚⠯⣄⡀⠀⠀
+⡜⠀⠀⠀⠀⢸⣤⡶⠦⢤⣼⣇⠀⠈⢉⣧⢿⣧⠴⠚⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣷⠀⠀⠀⠀⠉⢦⠀
+⣇⠀⠀⠀⠀⠈⠳⣄⣀⣀⣈⣿⠑⠢⠤⠼⡞⣿⡄⠀⠀⠀⠀⠀⢀⣀⣠⡤⠴⠶⠶⠒⠒⢿⡇⠀⠀⠀⠀⠸⡆
+⠘⣦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢇⠈⠐⠂⠙⣖⠻⣤⣠⣤⡶⠞⠋⠉⠀⠀⠀⠀⠀⠀⢀⡼⠃⠀⠀⠀⠀⢸⠇
+⠀⠈⠓⢦⣀⠀⠀⠀⠀⠀⠀⠀⠘⢧⡀⠀⠀⠈⠢⠀⠉⠓⠦⠤⢤⣀⣠⠤⠤⠤⠒⠚⠉⠀⠀⠀⠀⠀⣠⡟⠁
+⠀⠀⠀⠀⠈⠙⠓⠲⠶⠶⠶⠶⠞⠛⠓⢄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣴⠟⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠒⠤⢄⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣤⠴⠞⠋⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    """
+   # w.addstr(sh // 2 - 6, sw // 2 - len(title) // 2, title)
+    w.addstr(sh // 2 - 6, sw // 2 - len(title.splitlines()[0]) // 2, title)
+    # snake_x = sw // 2 - len(title.splitlines()[0]) // 2
+    # snake_y = sh // 2 - len(title.splitlines()) - 6
+    # 
+    # w.addstr(snake_y, snake_x, title)
+    #
     option1_text = "1. New Game"
     option2_text = "2. Quit"
 
@@ -28,14 +58,16 @@ def show_menu():
 def game_over(score):
     w.clear()
     w.border(0)
-    w.addstr(sh // 2 - 2, sw // 2 - 5, "Game Over")
+    title = "Game Over"
+    w.addstr(sh // 2 - 6, sw //2 - len(title) // 2, title)
+   # w.addstr(sh // 2 - 2, sw // 2 - 5, "Game Over")
 
     score_text = "Score: {}".format(score)
     score_x = sw // 2 - len(score_text) // 2
     w.addstr(sh // 2, score_x, score_text)
 
 
-    option2_text = "2. Quit"
+    option2_text = "1. Quit"
 
 
     option2_x = sw // 2 - len(option2_text) // 2
@@ -45,10 +77,10 @@ def game_over(score):
 
     while True:
         key = w.getch()
-        if key == ord('1'):
+        if key == ord('2'):
             w.clear()
             break
-        elif key == ord('2'):
+        if key == ord('1'):
             curses.endwin()
             quit()
 
@@ -110,13 +142,13 @@ while True:
 
     next_key = w.getch()
     if next_key != -1:
-        if next_key == curses.KEY_DOWN or next_key == ord('s') and direction != curses.KEY_UP:
+        if (next_key == curses.KEY_DOWN or next_key == ord('s')) and direction != curses.KEY_UP:
             direction = next_key
-        elif next_key == curses.KEY_UP or next_key == ord('w') and direction != curses.KEY_DOWN:
+        elif (next_key == curses.KEY_UP or next_key == ord('w')) and direction != curses.KEY_DOWN:
             direction = next_key
-        elif next_key == curses.KEY_LEFT or next_key == ord('a') and direction != curses.KEY_RIGHT:
+        elif (next_key == curses.KEY_LEFT or next_key == ord('a')) and direction != curses.KEY_RIGHT:
             direction = next_key
-        elif next_key == curses.KEY_RIGHT or next_key == ord('d') and direction != curses.KEY_LEFT:
+        elif (next_key == curses.KEY_RIGHT or next_key == ord('d')) and direction != curses.KEY_LEFT:
             direction = next_key
 
     if next_key == ord('q') or next_key == ord('Q'):
@@ -185,12 +217,39 @@ while True:
 
         if apple_counter % 2 == 0:
             delay *= 0.5
-
+    #
         while True:
             new_food = [random.randint(1, sh - 2), random.randint(1, sw - 2)]
+            
+            collision = False
+            for segment in snake:
+                if new_food == segment:
+                    collision = True
+                    break
+
+            if collision:
+                continue
+            
             if new_food not in snake and new_food != pear and new_food != bomb:
                 food = new_food
                 break
+
+        # new_food = None
+        # while new_food is None:
+        #     potential_food = [random.randint(1, sh - 2), random.randint(1, sw - 2)]
+        #
+        #     collision = False
+        #     for segment in snake:
+        #         if potential_food == segment:
+        #             collision = True
+        #             break
+        #
+        #     if collision or potential_food == pear or potential_food == bomb:
+        #         continue
+        #
+        # new_food = potential_food
+        # food = new_food
+        #
     else:
         tail = snake.pop()
         w.addch(tail[0], tail[1], ' ')
@@ -201,10 +260,11 @@ while True:
         w.addch(bomb[0], bomb[1], '💣')
 
     w.addch(food[0], food[1], '🍏')
-    w.addch(snake[0][0], snake[0][1], curses.ACS_BLOCK)
+    w.addch(snake[0][0], snake[0][1], "O")
     time.sleep(delay)
+game_over(score)
 
 curses.endwin()
 
-game_over(score)
+
 
