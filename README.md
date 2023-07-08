@@ -12,7 +12,7 @@
 
 Just paste this into your terminal:
 ```
-git clone https://www.github.com/RchrdAlv/SnakeGame-Terminal
+git clone https://www.github.com/RchrdAriza/SnakeGame-Terminal
 ```
 
 Now to be able to play do this:
